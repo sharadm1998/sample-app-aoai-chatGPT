@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v2
       with:
         registry: https://leviacontainer.azurecr.io/
-        username: ${{ secrets.AzureAppService_ContainerUsername_b0d7a244cf384eb685b6327730c76f63 }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_fe43dc4103d944c2a945a046e9e3365b }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_318a24e67f404c1fbb3c3fdd343e37fb }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_09415458344c4f3484244fa6ba436d11 }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: leviacontainer.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_b0d7a244cf384eb685b6327730c76f63 }}/sample-app-aoai-chatgpt:${{ github.sha }}
+        tags: leviacontainer.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_318a24e67f404c1fbb3c3fdd343e37fb }}/sample-app-aoai-chatGPT:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'Levia'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_c498f080ddf54e3f91cac2a5f2be1b70 }}
-        images: 'leviacontainer.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_b0d7a244cf384eb685b6327730c76f63 }}/sample-app-aoai-chatgpt:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_af02e05ce5084852a1a2c21138f34199 }}
+        images: 'leviacontainer.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_318a24e67f404c1fbb3c3fdd343e37fb }}/sample-app-aoai-chatGPT:${{ github.sha }}'
